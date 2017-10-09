@@ -19,5 +19,11 @@
   "homepage": "https://github.com/peterwilli/IOTA-Game.js#readme",
   "dependencies": {
     "simple-peer": "^8.1.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "webpack": "^3.6.0"
   }
 }
