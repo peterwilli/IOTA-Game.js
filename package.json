@@ -1,0 +1,23 @@
+{
+  "name": "iota-game",
+  "version": "0.0.1",
+  "description": "A skill-based gambling framework based on IOTA Flash. Create provably-fair decentralized online games!",
+  "main": "src/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/peterwilli/IOTA-Game.js.git"
+  },
+  "author": "Peter Willemsen <peter@codebuffet.co>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/peterwilli/IOTA-Game.js/issues"
+  },
+  "homepage": "https://github.com/peterwilli/IOTA-Game.js#readme",
+  "dependencies": {
+    "simple-peer": "^8.1.1"
+  }
+}
