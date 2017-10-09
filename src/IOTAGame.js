@@ -1,30 +1,43 @@
 var Peer = require('simple-peer')
+var EventEmitter = require('eventemitter3')
 
-class IOTAGame {
+module.exports = class IOTAGame {
     constructor(opts) {
         var defaults = {
             provider: ''
         }
         var options = Object.assign({}, defaults, opts)
+        this.events = new EventEmitter()
+    }
+    
+    _initPeer(initiator) {
+        var p = new Peer({ initiator: initiator, trickle: false }) 
+        var _this = this 
+        p.on('signal', function (data) { 
+          _this.events.emit('signal', data) 
+        })
+ 
+        this.peer = p
+    }
+
+    joinGame() {
+        this._initPeer(false)
     }
     
     startGame() {
-        var p = new Peer({ initiator: true, trickle: false })
-        p.on('error', function (err) { console.log('error', err) })
-
-        p.on('signal', function (data) {
-          console.log('SIGNAL', JSON.stringify(data))
-        })
-        
-        p.on('connect', function () {
-          console.log('CONNECT')
-          p.send('whatever' + Math.random())
-        })
-        
-        p.on('data', function (data) {
-          console.log('data: ' + data)
-        })
-        
-        this.peer = p
+        this._initPeer(true)
+    }
+    
+    // Event emitter overrides
+    on(eventName, fn) {
+        this.events.on(eventName, fn, this)
+    }
+    
+    once(eventName, fn) { 
+        this.events.once(eventName, fn, this) 
+    }
+    
+    off(eventName, fn) {
+        this.events.removeListener(eventName, fn)
     }
 }

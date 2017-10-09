@@ -1,9 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>IOTA Game Example</title>
+    <script src="../iota-game.dist.js"></script>    
 </head>
-<body>
 
+<body>
+    <input type="button" onclick="startGame()"  value="Start game"></input> 
+    <input type="button" onclick="joinGame()" value="Join game"></input>
+    <script>
+        var game = new IOTAGame()
+        game.on('signal', function(data) {
+            console.log(data)
+        })
+        function startGame() {
+            game.startGame()
+        }
+        
+        function joinGame() {
+            game.joinGame()
+        }
+    </script>
 </body>
-</html
+</html>

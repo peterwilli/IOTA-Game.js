@@ -1,1 +1,1 @@
-require('./IOTAGame.js')
+module.exports = require('./IOTAGame.js')
